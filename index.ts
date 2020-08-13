@@ -9,7 +9,7 @@ import { config } from 'https://deno.land/x/dotenv/mod.ts';
 const args = parse(Deno.args);
 
 if (args.city === undefined) {
-    console.error("No city supplied");
+    console.error("No city supplied ❌");
     Deno.exit();
 }
 
@@ -20,8 +20,9 @@ const res = await fetch(
 );
 const data = await res.json();
 
-if (data.cod !== 200) {
-    console.error("API call failed");
+if (data.cod !== "200") {
+    console.error("API call failed ❌");
+    console.error(data.message);
     Deno.exit();
 }
 
@@ -39,7 +40,7 @@ const forecast = data.list.slice(0, 8).map((item: forecastItem) => [
 
 const table = AsciiTable.fromJSON({
   title: `${data.city.name} Forecast`,
-  heading: ["Time", "Temp", "Weather"],
+  heading: ["Time ⏰", "Temp 🌡", "Weather 🌤"],
   rows: forecast,
 });
 

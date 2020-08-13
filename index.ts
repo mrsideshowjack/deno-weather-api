@@ -22,13 +22,17 @@ const res = await fetch(
   `https://api.openweathermap.org/data/2.5/forecast?q=${args.city}&units=metric&appid=${apiKey}`,
 );
 const data = await res.json();
-console.log(data);
 
 // handle api errors
 if (data.cod !== "200") {
     console.error("API call failed ❌");
     console.error(data.message);
     Deno.exit();
+}
+
+// if data arg return full data
+if (args.data) {
+    console.log(data)
 }
 
 // define typescript type for forecast item

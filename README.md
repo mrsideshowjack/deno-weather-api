@@ -8,7 +8,7 @@ basic app to learn deno, returns weather in console.
 
 *Output:*
 
-```
+```bash
 .---------------------------------------------.
 |             Portsmouth Forecast             |
 |---------------------------------------------|
